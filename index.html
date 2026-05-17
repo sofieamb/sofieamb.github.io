@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skincare4U - Smart Skincare Assistant</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --lilac: #e0b4b4;
+            --dark-lilac: #4d7855;
+            --soft: #f4f8f5;
+            --white: #ffffff;
+            --text: #2d2d2d;
+            --gray: #666;
+            --shadow: 0 10px 30px rgba(77, 120, 85, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: var(--soft);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5rem 8%;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            color: var(--dark-lilac);
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 1.8rem;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--dark-lilac);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--dark-lilac);
+            border: 2px solid var(--lilac);
+        }
+
+        .hero-card {
+            flex: 1;
+            min-width: 320px;
+            background: white;
+            border-radius: 30px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .mockup {
+            background: linear-gradient(135deg, #d4e6d6, #f4f8f5);
+            border-radius: 24px;
+            padding: 2rem;
+        }
+
+        .upload-box {
+            border: 2px dashed var(--dark-lilac);
+            border-radius: 18px;
+            padding: 2rem;
+            text-align: center;
+            background: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .upload-box p {
+            color: var(--gray);
+        }
+
+        .routine-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 16px;
+            margin-top: 1rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .routine-card h4 {
+            color: var(--dark-lilac);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-figure {
+            margin-top: 1.5rem;
+            border-radius: 16px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .hero-figure img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .hero-figure figcaption {
+            font-size: 0.72rem;
+            color: var(--gray);
+            padding: 0.5rem 1rem;
+            text-align: center;
+        }
+
+        .feature-image {
+            margin-top: 3rem;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            background: white;
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .feature-image figcaption {
+            font-size: 0.72rem;
+            color: var(--gray);
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+        }
+
+        /* FEATURES */
+
+        .features {
+            padding: 5rem 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--gray);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            transition: 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-lilac);
+        }
+
+        /* PRICING */
+
+        .pricing {
+            padding: 5rem 8%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .pricing-video {
+            flex: 1;
+            min-width: 280px;
+            max-width: 480px;
+        }
+
+        .pricing-tagline {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--dark-lilac);
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-video video {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            display: block;
+        }
+
+        .video-credit {
+            font-size: 0.75rem;
+            color: var(--gray);
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+
+        .video-credit a {
+            color: var(--dark-lilac);
+            text-decoration: none;
+        }
+
+        .video-credit a:hover {
+            text-decoration: underline;
+        }
+
+        .price-box {
+            flex: 1;
+            min-width: 280px;
+            max-width: 500px;
+            text-align: center;
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .price {
+            font-size: 4rem;
+            color: var(--dark-lilac);
+            margin: 1rem 0;
+        }
+
+        .disclaimer {
+            background: #fff8e1;
+            border: 1px solid #ffe082;
+            color: #795548;
+            text-align: center;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- DISCLAIMER -->
+
+<div class="disclaimer">
+    This is a fictional product created for educational purposes only. Skincare4U does not exist as a real service and no purchases can be made.
+</div>
+
+<!-- NAVIGATION -->
+
+<div id="header"></div>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-text">
+        <h1>
+            Your personalized
+            <span class="highlight">skincare routine</span>
+        </h1>
+
+        <p>
+            Skincare4U creates customized skincare routines together with
+            dermatologists and AI technology. Upload photos, answer a few
+            questions, and receive a routine tailored to your skin.
+        </p>
+
+        <div class="buttons">
+            <a href="#" class="btn btn-primary">
+                Buy — €39,99
+            </a>
+
+            <a href="#features" class="btn btn-secondary">
+                Learn More
+            </a>
+        </div>
+    </div>
+
+    <div class="hero-card">
+
+        <div class="mockup">
+
+            <h2 style="margin-bottom: 1.5rem; color: var(--dark-lilac);">
+                Your Skin Dashboard
+            </h2>
+
+            <div class="upload-box">
+                <h3>Upload Skin Photos</h3>
+                <p>PNG, JPG supported</p>
+            </div>
+
+            <div class="routine-card">
+                <h4>Morning Routine</h4>
+                <p>Cleanser • Niacinamide • SPF 50</p>
+            </div>
+
+            <div class="routine-card">
+                <h4>Evening Routine</h4>
+                <p>Gentle Cleanser • Retinol • Moisturizer</p>
+            </div>
+
+            <figure class="hero-figure">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Korean_cosmetic_products.jpg/500px-Korean_cosmetic_products.jpg"
+                        alt="A selection of South Korean skincare and cosmetic products arranged together"
+                    />
+                <figcaption>Image by Jmh65890, CC0, via Wikimedia Commons</figcaption>
+            </figure>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features" id="features">
+
+    <div class="section-title">
+        <h2>Why people love Skincare4U</h2>
+
+        <p>
+            Smart skincare management powered by AI and dermatology experts.
+        </p>
+    </div>
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+            <h3>AI Skin Analysis</h3>
+
+            <p>
+                Analyze skin conditions based on photos and personal information.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Track Your Products</h3>
+
+            <p>
+                Keep track of what products you use and monitor progress over time.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>Dermatologist Approved</h3>
+
+            <p>
+                Every recommendation is based on dermatological best practices.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <h3>One-Time Purchase</h3>
+
+            <p>
+                No subscriptions. Buy once and access all features forever.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PRICING -->
+
+<section class="pricing" id="pricing">
+
+    <div class="pricing-video">
+        <p class="pricing-tagline">Start taking care of yourself — your skin will thank you.</p>
+        <video autoplay muted loop playsinline aria-label="Background video showing a skincare routine">
+            <source src="resources/31953-389724688.mp4" type="video/mp4">
+            A short video showing a skincare routine to inspire you to start your own.
+        </video>
+        <p class="video-credit">
+            Video by u_rjjehevu from Pixabay
+        </p>
+    </div>
+
+    <div class="price-box">
+
+        <h2>Simple Pricing</h2>
+
+        <div class="price">€39,99</div>
+
+        <p>
+            One-time payment. No hidden fees. Full access forever.
+        </p>
+
+        <br>
+
+        <a href="#" class="btn btn-primary">
+            Get Skincare4U
+        </a>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<div id="footer"></div>
+
+<script src="js/components.js"></script>
+</body>
+</html>
